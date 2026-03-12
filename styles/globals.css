@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #1a1916;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root {
+  --ipod-body: #e8e6e1;
+  --ipod-silver: #c0bdb8;
+  --ipod-screen-bg: #d4dfe6;
+  --ipod-screen-white: #f0f0f0;
+  --ipod-menu-blue: #3478f6;
+  --ipod-text: #1a1a1a;
+  --ipod-subtext: #555;
+  --ipod-wheel: #f0eeea;
+  --ipod-wheel-shadow: #b8b5b0;
+}
+
+/* iPod screen font — pixel-like system font */
+.screen-font {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* LCD screen effect */
+.lcd-screen {
+  background: var(--ipod-screen-bg);
+  image-rendering: pixelated;
+}
+
+/* Click wheel gradient */
+.wheel-gradient {
+  background: radial-gradient(
+    ellipse at 40% 30%,
+    #ffffff 0%,
+    #f0eeea 30%,
+    #e0ddd8 60%,
+    #c8c5c0 100%
+  );
+}
+
+.wheel-ring-gradient {
+  background: radial-gradient(
+    ellipse at 35% 25%,
+    #e8e5e0 0%,
+    #d0cdc8 40%,
+    #b8b5b0 100%
+  );
+}
+
+/* Scrollbar hide */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Menu selection blue */
+.menu-selected {
+  background: linear-gradient(180deg, #5b9bf8 0%, #2563eb 100%);
+}
+
+/* Progress bar shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Wheel press effect */
+@keyframes wheelPress {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.97); }
+}
+
+.wheel-press { animation: wheelPress 0.12s ease; }
+
+/* Screen transition */
+@keyframes screenSlideRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes screenSlideLeft {
+  from { transform: translateX(-30%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.screen-enter { animation: screenSlideRight 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.screen-back  { animation: screenSlideLeft  0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* iPod body shine */
+.ipod-shine {
+  background: linear-gradient(
+    160deg,
+    rgba(255,255,255,0.6) 0%,
+    rgba(255,255,255,0.1) 40%,
+    transparent 60%
+  );
+}
